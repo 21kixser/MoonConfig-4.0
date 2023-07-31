@@ -1,20 +1,20 @@
 local HttpService = game:GetService("HttpService")
 
 
-local whitelist = HttpService:JSONDecode(HttpService:JSONDecode(game:HttpGet("https://raw.githubusercontent.com/Damcpros/MoonConfig-4.0/main/data.json")))
+local whitelist = HttpService:JSONDecode(game:HttpGet("https://raw.githubusercontent.com/Damcpros/MoonConfig-4.0/main/data.json"))
 local hashLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Damcpros/MoonConfig-4.0/main/hashLib.lua"), true)()
 
 local lib = {}
 
 function lib:GetPlayerData(id)
 	local whitelisted, tag, priority = false, {false, false}, 0
-	local hash = hashLib.sha256(tostring(id))
+	local hash = tostring(hashLib.sha256(tostring(id)))
 	print(hash)
 	local tagAdded = false
 
 	if whitelist["tags"] ~= nil then
 		for i, v in pairs(whitelist["tags"]) do
-			if v.userid == hash then
+			if tostring(v.userid) == hash then
 				tagAdded = true
 				tag[1] = v.tag
 				local c = tostring(v.color):split("_")
@@ -25,7 +25,7 @@ function lib:GetPlayerData(id)
 
 	if whitelist["Owner"] ~= nil then
 		for i, v in pairs(whitelist["Owner"]) do
-			if v.id == hash then
+			if tostring(v.id) == hash then
 				priority = 2
 				whitelisted = true
 				if not tagAdded then
@@ -38,7 +38,7 @@ function lib:GetPlayerData(id)
 
 	if whitelist["Private"] ~= nil then
 		for i, v in pairs(whitelist["Private"]) do
-			if v.id == hash then
+			if tostring(v.id) == hash then
 				priority = 1
 				whitelisted = true
 				if not tagAdded then
@@ -51,7 +51,7 @@ function lib:GetPlayerData(id)
 
 	if whitelist["Snoopy"] ~= nil then
 		for i, v in pairs(whitelist["Snoopy"]) do
-			if v.id == hash then
+			if tostring(v.id) == hash then
 				priority = 1
 				whitelisted = true
 				if not tagAdded then
