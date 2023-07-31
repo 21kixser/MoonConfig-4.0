@@ -8,7 +8,7 @@ local lib = {}
 
 function lib:GetPlayerData(id)
 	local whitelisted, tag, priority = false, {false, false}, 0
-	local hash = tostring(hashLib.sha512(tostring(id)))
+	local hash = tostring(hashLib.sha256(tostring(id)))
 	local tagAdded = false
 
 	if whitelist["tags"] ~= nil then
