@@ -24,7 +24,7 @@ function lib:GetPlayerData(id)
 
 	if whitelist["Owner"] ~= nil then
 		for i, v in pairs(whitelist["Owner"]) do
-			print(tostring(v.id), ":", hash)
+			print(tostring(v.id), ":", tostring(hash))
 			if tostring(v.id) == hash then
 				priority = 2
 				whitelisted = true
