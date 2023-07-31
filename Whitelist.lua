@@ -9,7 +9,6 @@ local lib = {}
 function lib:GetPlayerData(id)
 	local whitelisted, tag, priority = false, {false, false}, 0
 	local hash = tostring(hashLib.sha256(tostring(id)))
-	print(hash)
 	local tagAdded = false
 
 	if whitelist["tags"] ~= nil then
@@ -25,6 +24,7 @@ function lib:GetPlayerData(id)
 
 	if whitelist["Owner"] ~= nil then
 		for i, v in pairs(whitelist["Owner"]) do
+			print(tostring(v.id), ":", hash)
 			if tostring(v.id) == hash then
 				priority = 2
 				whitelisted = true
