@@ -18,7 +18,8 @@ function lib:GetPlayerData(id)
 			if v.userid == hash then
 				tagAdded = true
 				tag[1] = v.tag
-				tag[2] = (Color3.fromRGB(v.r,v.g,v.b) or Color3.fromRGB(255,50,166))
+				local c = tostring(v.color):split("_")
+				tag[2] = (Color3.fromRGB(c[1],c[2],c[3]) or Color3.fromRGB(255,50,166))
 			end
 		end
 	end
