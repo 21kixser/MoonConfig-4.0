@@ -1,7 +1,7 @@
 {
-    "owner": {
-        "4892623041": {
-            "attackable": true
+    "private": {
+        "4907973363": {
+            "attackable": false
         }
     }
 }
